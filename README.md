@@ -1,6 +1,6 @@
 # primeDB: R Client for PRIME Database API
 
-An R package for accessing the PRIME (PRIME Database) microbiome data through its RESTful API. This package provides functions to retrieve project metadata, sample information, taxonomic data, abundance data, and statistical analyses from the PRIME database.
+An R package for accessing the PRIME ([PRIME Database](https://primedb.sjtu.edu.cn)) microbiome data through its RESTful API. This package provides functions to retrieve project metadata, sample information, taxonomic data, abundance data, and statistical analyses from the PRIME database.
 
 ## Features
 
