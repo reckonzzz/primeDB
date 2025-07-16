@@ -1,0 +1,30 @@
+Package: primeDB
+Type: Package
+Title: R Client for PRIME Database API
+Version: 0.1.0
+Authors@R: 
+    person("Zhizhuo", "Zhang", email = "zhangzhizhuo@sjtu.edu.cn", role = c("aut", "cre"))
+Description: An R package for accessing the PRIME (PRIME Database) microbiome data through its RESTful API. 
+    This package provides functions to retrieve project metadata, sample information, 
+    taxonomic data, abundance data, and statistical analyses from the PRIME database.
+    The package supports both Silva 138.2 and Greengenes2 2024.09 reference databases.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    httr,
+    jsonlite,
+    dplyr,
+    readr,
+    ggplot2,
+    ggrepel,
+    patchwork
+Suggests: 
+    testthat,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
+RoxygenNote: 7.3.2
+URL: https://primedb.sjtu.edu.cn
+BugReports: https://github.com/reckonzzz/primeDB/issues
+Roxygen: list(markdown = TRUE)

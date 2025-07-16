@@ -1,0 +1,50 @@
+# R specific files
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+.Rbuildignore
+*.Rproj
+
+# R package build artifacts
+*.tar.gz
+*.tgz
+*.zip
+*.pdf
+
+# Documentation build artifacts
+docs/
+vignettes/*.html
+vignettes/*.pdf
+
+# Test coverage reports
+coverage/
+*.cov
+
+# Temporary files
+*.tmp
+*.temp
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# IDE specific files
+.vscode/
+.idea/
+
+# Log files
+*.log
+
+# Cache directories
+.cache/ 
+
+examples/
+examples/*
+
+api-v1.md
+test.R
+test_all_functions.R
+tests/
+tests/*

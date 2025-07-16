@@ -1,0 +1,405 @@
+---
+title: "Introduction to primeDB"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to primeDB}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\usepackage[utf8]{inputenc}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+The `primeDB` package provides an R interface to the PRIME (PRIME Database) microbiome data API. This vignette demonstrates how to use the package to access various types of data from the PRIME database, including project metadata, sample information, taxonomic data, abundance data, and statistical analyses.
+
+## Installation and Setup
+
+First, install and load the package:
+
+```{r setup}
+# Install the package (if not already installed)
+# devtools::install_github("reckonzzz/primeDB")
+
+library(primeDB)
+```
+
+## Basic Usage
+
+### Health Check
+
+Before using the API, it's good practice to check if the service is available:
+
+```{r health-check, eval = TRUE}
+# Check API health
+health <- health_check()
+print(health$status)
+```
+
+### Database Statistics
+
+Get an overview of the database:
+
+```{r stats, eval = TRUE}
+# Get database statistics
+stats <- get_stats()
+print(stats$basicStats$totalProjects)
+print(stats$basicStats$totalSamples)
+```
+
+## Working with Projects
+
+### Get All Projects
+
+```{r projects, eval = TRUE}
+# Get list of all projects
+projects <- get_projects()
+print(length(projects))
+```
+
+### Get Project Metadata
+
+```{r project-metadata, eval = TRUE}
+# Get metadata for specific projects
+metadata <- get_project_metadata(c("PRJDB13875", "PRJDB16847"))
+head(metadata)
+```
+
+### Get Project Samples
+
+```{r project-samples, eval = TRUE}
+# Get samples for a specific project
+samples <- get_project_samples("PRJDB13875")
+print(length(samples))
+```
+
+### Get Project Statistics
+
+```{r project-stats, eval = TRUE}
+# Get detailed statistics for a specific project
+project_stats <- get_project_stats("PRJDB13875")
+print(names(project_stats))
+```
+
+## Working with Samples
+
+### Get Sample Metadata
+
+```{r sample-metadata, eval = TRUE}
+# Get metadata for specific samples
+sample_metadata <- get_sample_metadata(c("DRR396974", "DRR396975"))
+head(sample_metadata)
+```
+
+### Get Sample Statistics
+
+```{r sample-stats, eval = TRUE}
+# Get detailed information for a specific sample
+sample_stats <- get_sample_stats("DRR396974")
+names(sample_stats)
+```
+
+### Get Sample Project
+
+```{r sample-project, eval = TRUE}
+# Get project information for a specific sample
+sample_project <- get_sample_project("DRR396974")
+print(sample_project)
+```
+
+## Working with Phenotypes
+
+### Get Phenotype List
+
+```{r phenotypes, eval = TRUE}
+# Get all phenotypes
+phenotypes <- get_phenotypes()
+head(phenotypes)
+```
+
+### Get Phenotype Projects
+
+```{r phenotype-projects, eval = TRUE}
+# Get projects for a specific phenotype
+phenotype_projects <- get_phenotype_projects(1)
+print(phenotype_projects)
+```
+
+### Get Phenotype Samples
+
+```{r phenotype-samples, eval = TRUE}
+# Get samples for a specific phenotype
+phenotype_samples <- get_phenotype_samples(1)
+print(length(phenotype_samples))
+```
+
+### Get Phenotype Statistics
+
+```{r phenotype-stats, eval = TRUE}
+# Get statistics for a specific phenotype
+phenotype_stats <- get_phenotype_stats(1)
+names(phenotype_stats)
+```
+
+## Working with Body Sites
+
+### Get Body Sites
+
+```{r bodysites, eval = TRUE}
+# Get all body sites
+bodysites <- get_bodysites()
+head(bodysites)
+```
+
+### Get Body Site Projects
+
+```{r bodysite-projects, eval = TRUE}
+# Get projects for a specific body site
+bodysite_projects <- get_bodysite_projects(4)
+print(bodysite_projects)
+```
+
+### Get Body Site Samples
+
+```{r bodysite-samples, eval = TRUE}
+# Get samples for a specific body site
+bodysite_samples <- get_bodysite_samples(4)
+print(length(bodysite_samples))
+```
+
+### Get Body Site Statistics
+
+```{r bodysite-stats, eval = TRUE}
+# Get statistics for a specific body site
+bodysite_stats <- get_bodysite_stats(4)
+names(bodysite_stats)
+```
+
+## Working with Countries
+
+### Get Countries
+
+```{r countries, eval = TRUE}
+# Get all countries
+countries <- get_countries()
+head(countries)
+```
+
+### Get Country Projects
+
+```{r country-projects, eval = TRUE}
+# Get projects for a specific country
+country_projects <- get_country_projects(1)
+print(country_projects)
+```
+
+### Get Country Samples
+
+```{r country-samples, eval = TRUE}
+# Get samples for a specific country
+country_samples <- get_country_samples(1)
+print(length(country_samples))
+```
+
+### Get Country Statistics
+
+```{r country-stats, eval = TRUE}
+# Get statistics for a specific country
+country_stats <- get_country_stats(1)
+names(country_stats)
+```
+
+## Working with Systems
+
+### Get Systems
+
+```{r systems, eval = TRUE}
+# Get all systems
+systems <- get_systems()
+head(systems)
+```
+
+### Get System Projects
+
+```{r system-projects, eval = TRUE}
+# Get projects for a specific system
+system_projects <- get_system_projects('nervous')
+print(system_projects)
+```
+
+### Get System Samples
+
+```{r system-samples, eval = TRUE}
+# Get samples for a specific system
+system_samples <- get_system_samples('nervous')
+print(length(system_samples))
+```
+
+### Get System Statistics
+
+```{r system-stats, eval = TRUE}
+# Get statistics for a specific system
+system_stats <- get_system_stats('nervous')
+names(system_stats)
+```
+
+## Working with Taxonomy
+
+### Get Taxonomy List
+
+```{r taxonomy-list, eval = TRUE}
+# Get taxonomy list for a specific rank
+taxa <- get_taxonomy_list("gg", "phylum")
+head(taxa)
+```
+
+### Get Taxonomy Hierarchy
+
+```{r taxonomy-hierarchy, eval = TRUE}
+# Get parent taxon information
+parent <- get_taxonomy_parent("gg", 15)
+print(parent)
+
+# Get child taxa
+children <- get_taxonomy_children("gg", 15)
+print(children)
+```
+
+### Get Taxonomy Statistics
+
+```{r taxonomy-stats, eval = TRUE}
+# Get statistics for a specific taxon
+taxonomy_stats <- get_taxonomy_stats("gg", 15)
+names(taxonomy_stats)
+```
+
+### Get Taxonomy Projects
+
+```{r taxonomy-projects, eval = TRUE}
+# Get projects for a specific taxon
+taxonomy_projects <- get_taxonomy_projects("gg", 15)
+print(taxonomy_projects)
+```
+
+### Get Taxonomy Samples
+
+```{r taxonomy-samples, eval = TRUE}
+# Get samples for a specific taxon
+taxonomy_samples <- get_taxonomy_samples("gg", 15)
+print(taxonomy_samples)
+```
+
+## Working with Abundance Data
+
+### Get Project Abundance Data
+
+```{r abundance-project, eval = TRUE}
+# Get abundance data for projects
+abundance <- get_abundance_project("gg", "phylum", "absolute", 
+                                 c("PRJDB13875", "PRJDB16847"))
+
+# Data is returned as a matrix with samples as rows and taxa as columns
+print(dim(abundance))
+print(abundance[1:5,1:5])
+```
+
+### Get Sample Abundance Data
+
+```{r abundance-sample, eval = TRUE}
+# Get abundance data for specific samples
+sample_abundance <- get_abundance_sample("gg", "phylum", "absolute", 
+                                       c("DRR396974", "DRR396975"))
+print(dim(sample_abundance))
+print(abundance[1:5,1:5])
+```
+
+### Get Cached Abundance Data
+
+```{r abundance-cache, eval = TRUE}
+# Get cached abundance data
+cached_abundance <- get_abundance_cache("gg", "phylum", "absolute")
+print(dim(cached_abundance))
+print(abundance[1:5,1:5])
+```
+
+## Data Visualization
+
+### Plot Distribution Charts
+
+The package includes a powerful visualization function for creating pie charts from distribution data:
+
+```{r visualization, eval = FALSE}
+# Get project statistics
+project_stats <- get_project_stats("PRJDB13875")
+
+# Plot all available distributions
+plot_distributions(project_stats)
+
+# Plot specific distributions only
+plot_distributions(project_stats, plot_names = c("countries", "systems"))
+```
+
+The `plot_distributions()` function automatically:
+- Creates pie charts for distribution data
+- Handles multiple categories with "Others" grouping
+- Uses color-coded legends
+- Supports combined plots with patchwork
+- Provides clear labels with counts and percentages
+
+## Error Handling
+
+The package includes comprehensive error handling:
+
+```{r error-handling, eval = TRUE}
+# Handle invalid project accession
+tryCatch({
+  result <- get_project_samples("INVALID")
+}, error = function(e) {
+  cat("Error:", e$message, "\n")
+})
+
+# Handle invalid database type
+tryCatch({
+  result <- get_taxonomy_list("invalid", "phylum")
+}, error = function(e) {
+  cat("Error:", e$message, "\n")
+})
+```
+
+## Best Practices
+
+1. **Check API health** before making requests using `health_check()`
+2. **Handle errors gracefully** using tryCatch
+3. **Use appropriate timeouts** for large datasets
+4. **Parse CSV data** using readr for abundance data
+5. **Cache results** when possible to avoid repeated requests
+6. **Use visualization functions** for better data exploration
+
+## Rate Limiting
+
+The API currently has no rate limiting, but it's recommended to:
+- Make no more than 10 requests per second
+- Implement appropriate delays between requests for large datasets
+- Handle errors gracefully
+
+## Package Dependencies
+
+The package requires the following R packages:
+- `httr` for HTTP requests
+- `jsonlite` for JSON parsing
+- `dplyr` for data manipulation
+- `readr` for CSV parsing
+- `ggplot2` for visualization
+- `ggrepel` for label positioning
+- `patchwork` for combining plots
+
+## Conclusion
+
+The `primeDB` package provides a comprehensive interface to the PRIME database API. With its easy-to-use functions, comprehensive error handling, and built-in visualization capabilities, it makes accessing and analyzing microbiome data simple and efficient.
+
+For more information, see the package documentation and the [PRIME database website](https://primedb.sjtu.edu.cn). 
