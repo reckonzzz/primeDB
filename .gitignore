@@ -48,3 +48,4 @@ test.R
 test_all_functions.R
 tests/
 tests/*
+*.bundle
