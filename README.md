@@ -111,11 +111,11 @@ print(dim(abundance))
 ```r
 # Get all projects
 projects <- get_projects()
-print(length(projects$projectAccessions))
+print(length(projects))
 
 # Get samples for a specific project
 samples <- get_project_samples("PRJDB13875")
-print(samples$count)
+print(length(samples))
 
 # Get detailed statistics for a project
 stats <- get_project_stats("PRJDB13875")
@@ -132,9 +132,8 @@ print(head(bodysites))
 
 # Get samples for a specific body site
 samples <- get_bodysite_samples(2)
-print(samples$count)
-print(dim(samples$data$runs))  # runs matrix dimensions
-print(head(samples$data$runs, 5))  # First 5 rows of runs data
+print(length(samples))
+print(dim(samples))  # runs matrix dimensions
 ```
 
 ### Working with Abundance Data
@@ -157,8 +156,6 @@ print(dim(sample_abundance))
 ### Working with Visualizations
 
 ```r
-library(ggplot2)
-
 # Get project statistics for visualization
 stats <- get_project_stats("PRJDB13875")
 
