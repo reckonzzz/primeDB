@@ -179,13 +179,6 @@ All functions return standardized data structures:
 All functions include comprehensive error handling:
 
 ```r
-# Invalid project accession
-tryCatch({
-  result <- get_project_samples("INVALID")
-}, error = function(e) {
-  cat("Error:", e$message, "\n")
-})
-
 # Invalid database type
 tryCatch({
   result <- get_taxonomy_list("invalid", "phylum")
