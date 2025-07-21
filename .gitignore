@@ -5,6 +5,8 @@
 .Ruserdata
 .Rbuildignore
 *.Rproj
+cran-comments.md
+CRAN-SUBMISSION
 
 # R package build artifacts
 *.tar.gz
