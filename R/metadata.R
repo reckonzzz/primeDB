@@ -46,7 +46,7 @@ get_project_metadata <- function(project_accessions) {
 #' print(metadata)
 #'
 #' # For large datasets, batch processing is automatic
-#' large_metadata <- get_sample_metadata(large_run_list)
+#' # large_metadata <- get_sample_metadata(large_run_list)
 get_sample_metadata <- function(runs, show_progress = TRUE) {
   if (!is.character(runs) || length(runs) == 0) {
     stop("runs must be a non-empty character vector")

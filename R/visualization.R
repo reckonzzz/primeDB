@@ -8,9 +8,11 @@
 #' @return A combined ggplot2 object if patchwork is available, otherwise a list of ggplot2 objects
 #'
 #' @examples
+#' \dontrun{
 #' data <- get_project_stats('PRJDB13875')
 #' plot_distributions(data)
 #' plot_distributions(data, plot_names = c('countries', 'systems'))
+#' }
 #'
 #' @export
 plot_distributions <- function(stats_data, plot_names = NULL) {
