@@ -223,8 +223,25 @@ This package is licensed under the MIT License.
 If you use this package in your research, please cite:
 
 ```
-NOT PUBLISHED YET.
-R package version 0.1.0. https://github.com/reckonzzz/primeDB
+Zhizhuo Zhang, Hongyu Zhao, Tao Wang, PRIME: a database for 16S rRNA microbiome data with phenotypic reference and comprehensive metadata, Nucleic Acids Research, 2025;, gkaf1057, https://doi.org/10.1093/nar/gkaf1057
+```
+
+bibtex:
+
+```bibtex
+@article{10.1093/nar/gkaf1057,
+    author = {Zhang, Zhizhuo and Zhao, Hongyu and Wang, Tao},
+    title = {PRIME: a database for 16S rRNA microbiome data with phenotypic reference and comprehensive metadata},
+    journal = {Nucleic Acids Research},
+    pages = {gkaf1057},
+    year = {2025},
+    month = {10},
+    abstract = {PRIME (Phenotypic Reference for Integrated Microbiome Enrichment) is a curated and standardized database of human microbiome 16S rRNA amplicon sequencing data, designed to facilitate cross-study analysis, reproducibility, and phenotype-driven discovery. PRIME aggregates 53 449 samples from 111 public studies, covering 93 body sites and 101 phenotypic categories, with detailed harmonization of sample-level metadata such as disease status, demographics, body sites, sequencing protocols, and experimental design. Each sample includes taxonomic abundance profiles generated via a consistent pipeline using both SILVA (138.2) and Greengenes2 (2024.09) reference databases, with results reported at multiple taxonomic levels as observed abundances (read counts) and relative abundances (proportions). A major strength of PRIME is its extensive manual curation, which standardizes phenotypic and contextual metadata across studies, enabling precise querying and robust phenotype-based comparisons. Users can interactively explore the database through a modern web interface, filter and visualize data by metadata fields, and download customized subsets. Programmatic access is supported via RESTful APIs and R package. PRIME aims to advance microbiome data integration and is continuously updated to incorporate new studies and features. The database is freely available at https://primedb.sjtu.edu.cn.},
+    issn = {1362-4962},
+    doi = {10.1093/nar/gkaf1057},
+    url = {https://doi.org/10.1093/nar/gkaf1057},
+    eprint = {https://academic.oup.com/nar/advance-article-pdf/doi/10.1093/nar/gkaf1057/65048637/gkaf1057.pdf},
+}
 ```
 
 ## Support
